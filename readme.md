@@ -1,40 +1,40 @@
-# Suíte de Testes Playwright - Funcionalidade de Login 2025
+# Playwright Test Suite - Login Functionality 2025
 
-## Suíte de Testes para Funcionalidade de Login
-Este projeto utiliza o Playwright para realizar uma série de testes no site da [Swag Labs](https://www.saucedemo.com/v1/). Os casos de teste cobrem o login bem-sucedido e o login sem sucesso com senha incorreta.
+## Test Suite for Login Functionality
+This project uses Playwright to perform a series of tests on the [Swag Labs](https://www.saucedemo.com/v1/) website. The test cases cover successful login and unsuccessful login with an incorrect password.
 
-## Instalação
-Clone o projeto com:
+## Installation
+Clone the project with:
 ```
-git clone https://github.com/seu-usuario/testes-login-playwright.git
+git clone https://github.com/DougHigashi/playwright-login-tests.git
 ```
 
-## Executando os Testes
-Para executar os testes, certifique-se de ter o Node.js instalado e, em seguida, execute os seguintes comandos na pasta raiz do projeto:
+## Running the Tests
+To run the tests, make sure you have Node.js installed and then execute the following commands in the project's root folder:
 
 ```
 npm install
 npm run test
 ```
 
-Os testes serão executados na página de login do site [https://www.saucedemo.com/v1/](https://www.saucedemo.com/v1/).
+The tests will be run on the login page of the [https://www.saucedemo.com/v1/](https://www.saucedemo.com/v1/) website.
 
-Para ver os resultados da execução dos teste, execute:
+To view the test execution results, run:
 
 ```
 npm run report
 ```
-E acesse o [link](http://localhost:9323) que ficará disponível no seu localhost
+And access the [link](http://localhost:9323) that will be available on your localhost
 
-### Casos de Teste Cobertos
-- **Login Bem-Sucedido**: Verifica se um usuário consegue fazer login com credenciais válidas.
-- **Login Sem Sucesso (Senha Incorreta)**: Verifica se uma mensagem de erro é exibida ao tentar fazer login com uma senha incorreta.
-- **Checkout com dois Itens com Sucesso**: Adiciona dois itens no carrinho, e prossegue até o checkout dos itens.
+### Test Cases Covered
+- **Successful Login**: Verifies if a user can log in with valid credentials.
+- **Unsuccessful Login (Incorrect Password)**: Verifies if an error message is displayed when attempting to log in with an incorrect password.
+- **Successful Checkout with Two Items**: Adds two items to the cart and proceeds to checkout the items.
 
-### Tecnologias Utilizadas
+### Technologies Used
 - [Node.js](https://nodejs.org/)
 - [Playwright](https://playwright.dev/)
 
-### Referências
-- [Documentação do Playwright](https://playwright.dev/docs/intro)
-- [Primeiros Passos com Playwright](https://playwright.dev/docs/getting-started)
+### References
+- [Playwright Documentation](https://playwright.dev/docs/intro)
+- [Getting Started with Playwright](https://playwright.dev/docs/getting-started)
