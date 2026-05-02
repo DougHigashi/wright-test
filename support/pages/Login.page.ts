@@ -1,5 +1,5 @@
-import { test, expect } from '@fixtures/fixtures';
-import type { Page } from '@playwright/test';
+import { test, expect } from '@fixtures/fixtures'
+import type { Page } from '@playwright/test'
 
 export class LoginPage {
 	private readonly _page: Page

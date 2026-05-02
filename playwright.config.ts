@@ -1,7 +1,7 @@
 import { defineConfig, devices } from '@playwright/test'
 
-import dotenv from 'dotenv';
-import path from 'path';
+import dotenv from 'dotenv'
+import path from 'path'
 dotenv.config({ path: path.resolve(__dirname, '.env') })
 
 const viewport = { width: 1280, height: 720 }
@@ -34,5 +34,5 @@ export default defineConfig({
 			},
 		},
 	],
-});
+})
 
