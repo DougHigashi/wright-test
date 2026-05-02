@@ -37,6 +37,7 @@ To run the tests, make sure you have Node.js installed and then execute the foll
 
 ```
 npm install
+npx playwright install
 npm run test
 ```
 
