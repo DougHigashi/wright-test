@@ -1,24 +1,41 @@
 // @ts-check
 import { test, expect } from '@fixtures/fixtures';
 
-test.describe.only('Login', async () => {
+test.describe('Login', async () => {
 
-	test('Successful login', async ({ page, loginPage, inventoryPage }) => {
+	test('Successful login', async ({ loginPage, inventoryPage }) => {
 
-		await loginPage.goto()
+		await test.step('Given the user provides valid login credential', async () => {
+			await loginPage.goto()
 
-		await loginPage.login('standard_user', 'secret_sauce')
+			await loginPage.login('standard_user', 'secret_sauce')
+		})
 
-		// Validates the login was successful by asserting the products grid
-		await inventoryPage.expectProductGridTo('be visible')
+		await test.step('When he clicks Login', async () => {
+			await loginPage.clickLogin()
+		})
+
+		await test.step('Then it should redirect to "/inventory.html"', async () => {
+			await inventoryPage.expectProductGridTo('be visible')
+		})
+
 	})
 
 	test('Unsuccessful login with wrong password', async ({ loginPage }) => {
 
-		await loginPage.goto()
+		await test.step('Given the user provides a wrong password', async () => {
+			await loginPage.goto()
 
-		await loginPage.login('standard_user', 'wrongpass')
+			await loginPage.login('standard_user', 'wrongpass')
+		})
 
-		await loginPage.expectErrorMessage('Username and password do not match any user in this service')
+		await test.step('When he clicks Login', async () => {
+			await loginPage.clickLogin()
+		})
+
+		await test.step('Then it should present the message "Username and password do not match any user in this service"', async () => {
+			await loginPage.expectErrorMessage('Username and password do not match any user in this service')
+		})
+
 	})
 })
