@@ -5,7 +5,7 @@ test.describe('Checkout', async () => {
 
     // Access the URL before each test and assert robot image is present
     test.beforeEach(async ({ page }) => {
-        await page.goto('/v1')
+        await page.goto('/')
 
         await page.getByPlaceholder('Username').fill('standard_user')
 
@@ -13,7 +13,7 @@ test.describe('Checkout', async () => {
 
         await page.getByText('Login').click()
 
-        await expect(page).toHaveURL('v1/inventory.html')
+        await expect(page).toHaveURL('/inventory.html')
     })
 
     test('Add two product to the cart and checkout successfuly', async ({ page }) => {
@@ -29,14 +29,14 @@ test.describe('Checkout', async () => {
 
         await page.locator('#shopping_cart_container > a').click()
 
-        await expect(page).toHaveURL('v1/cart.html')
+        await expect(page).toHaveURL('/cart.html')
 
         // Validate two items in the cart
         await expect(page.locator('.cart_list .cart_item')).toHaveCount(2)
 
         await page.locator('.checkout_button').click()
 
-        await expect(page).toHaveURL('v1/checkout-step-one.html')
+        await expect(page).toHaveURL('/checkout-step-one.html')
 
         await page.locator('.checkout_info #first-name').fill('John')
 
@@ -46,7 +46,7 @@ test.describe('Checkout', async () => {
 
         await page.locator('.checkout_buttons input').click()
 
-        await expect(page).toHaveURL('v1/checkout-step-two.html')
+        await expect(page).toHaveURL('/checkout-step-two.html')
 
         // Validate two items in the cart again
         await expect(page.locator('.cart_list .cart_item')).toHaveCount(2)
@@ -56,8 +56,6 @@ test.describe('Checkout', async () => {
         await expect(page.locator('#checkout_complete_container h2')).toHaveText('THANK YOU FOR YOUR ORDER')
 
         await expect(page.locator('#checkout_complete_container > div')).toHaveText('Your order has been dispatched, and will arrive just as fast as the pony can get there! ')
-
-
 
     })
 })

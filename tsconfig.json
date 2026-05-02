@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "types": ["@playwright/test", "node"],
+    "paths": {
+      "@fixtures/*": ["./support/fixtures/*"] 
+    }
+  },
+  "include": ["tests/**/*.ts", "playwright.config.ts"]
+}
