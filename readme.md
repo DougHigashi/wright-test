@@ -29,7 +29,7 @@ Scenario: Add two product to the cart and checkout successfuly
 ## Installation
 Clone the project with:
 ```
-git clone https://github.com/DougHigashi/playwright-login-tests.git
+git clone https://github.com/DougHigashi/wright-test
 ```
 
 ## Running the Tests
