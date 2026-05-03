@@ -5,7 +5,7 @@ import path from 'path'
 dotenv.config({ path: path.resolve(__dirname, '.env') })
 
 const viewport = { width: 1280, height: 720 }
-const headless = process.env.HEADLESS === 'true'
+const headless = process.env.HEADLESS === 'true' || true
 
 export default defineConfig({
 	testDir: './tests',
