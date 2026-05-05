@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "test": "npx playwright test",
-    "report": "npx playwright show-report"
+    "report": "npx allure generate --clean"
   },
   "author": "",
   "license": "ISC",
