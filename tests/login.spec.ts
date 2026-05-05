@@ -2,7 +2,7 @@ import { test } from '@fixtures/fixtures'
 
 test.describe('Login', async () => {
 
-	test('Successful login', async ({ loginPage, inventoryPage }) => {
+	test('Successful login', async ({ loginPage, inventoryPage }, testInfo) => {
 
 		await test.step('Given the user provides valid login credential', async () => {
 			await loginPage.goto()
@@ -16,11 +16,14 @@ test.describe('Login', async () => {
 
 		await test.step('Then it should redirect to "/inventory.html"', async () => {
 			await inventoryPage.expectProductGridTo('be visible')
+
+			const screenshot = await loginPage.screenshot()
+			await testInfo.attach('inventory', { body: screenshot, contentType: 'image/png' })
 		})
 
 	})
 
-	test('Unsuccessful login with wrong password', async ({ loginPage }) => {
+	test('Unsuccessful login with wrong password', async ({ loginPage }, testInfo) => {
 
 		await test.step('Given the user provides a wrong password', async () => {
 			await loginPage.goto()
@@ -34,6 +37,9 @@ test.describe('Login', async () => {
 
 		await test.step('Then it should present the message "Username and password do not match any user in this service"', async () => {
 			await loginPage.expectErrorMessage('Username and password do not match any user in this service')
+			
+			const screenshot = await loginPage.screenshot()
+			await testInfo.attach('failed login', { body: screenshot, contentType: 'image/png' })
 		})
 
 	})

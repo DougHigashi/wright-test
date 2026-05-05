@@ -5,7 +5,7 @@ test.describe('Checkout', async () => {
 	test('Add two product to the cart and checkout successfuly', async (
 		{
 			loginPage, inventoryPage, cartPage, checkoutStepOnePage, checkoutStepTwoPage, checkoutCompletePage
-		}) => {
+		}, testInfo) => {
 
 		await test.step('Given the user adds two products in the cart', async () => {
 
@@ -44,6 +44,9 @@ test.describe('Checkout', async () => {
 		await test.step('Then it should present the message "Thank you for your order!"', async () => {
 			// Validate successful checkout message
 			await checkoutCompletePage.validateCheckoutComplete()
+
+			const screenshot = await checkoutCompletePage.screenshot()
+			await testInfo.attach('checkout', { body: screenshot, contentType: 'image/png' })
 		})
 	})
 })

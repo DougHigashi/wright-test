@@ -18,5 +18,11 @@ export class CheckoutCompletePage {
 		})
 	}
 
-    
+	/**
+	 * Takes a screenhot and returns the Buffer
+	 * @returns Promise<Buffer>
+	 */
+	async screenshot() {
+		return await this.page.screenshot()
+	}
 }

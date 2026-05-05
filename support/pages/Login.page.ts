@@ -56,4 +56,12 @@ export class LoginPage {
 			await expect(this.errorMesage).toContainText(message)
 		})
 	}
+
+	/**
+	 * Takes a screenhot and returns the Buffer
+	 * @returns Promise<Buffer>
+	 */
+	async screenshot() {
+		return await this.page.screenshot()
+	}
 }

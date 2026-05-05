@@ -2,6 +2,7 @@ import { defineConfig, devices } from '@playwright/test'
 
 import dotenv from 'dotenv'
 import path from 'path'
+import * as os from "node:os"
 dotenv.config({ path: path.resolve(__dirname, '.env') })
 
 const viewport = { width: 1280, height: 720 }
@@ -13,7 +14,22 @@ export default defineConfig({
 	forbidOnly: !!process.env.CI,
 	retries: process.env.CI ? 2 : 0,
 	workers: process.env.CI ? 1 : undefined,
-	reporter: 'html',
+	reporter: [
+		["line"],
+		[
+			"allure-playwright",
+			{
+				resultsDir: "allure-results",
+				detail: false,
+				environmentInfo: {
+					os_platform: os.platform(),
+					os_release: os.release(),
+					os_version: os.version(),
+					node_version: process.version,
+				},
+			}
+		]
+	],
 	expect: {
 		timeout: 5000
 	},
@@ -27,7 +43,6 @@ export default defineConfig({
 
 	projects: [
 		{
-			name: 'chromium',
 			use: {
 				...devices['Desktop Chrome'],
 				viewport: viewport
